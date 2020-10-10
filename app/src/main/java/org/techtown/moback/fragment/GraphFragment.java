@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -54,12 +56,6 @@ public class GraphFragment extends Fragment {
             markerOptions.snippet("한국의 수도");
             mMap.addMarker(markerOptions);
 
-
-            // 기존에 사용하던 다음 2줄은 문제가 있습니다.
-
-            // CameraUpdateFactory.zoomTo가 오동작하네요.
-            //mMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
-            //mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SEOUL, 10));
         });
 
