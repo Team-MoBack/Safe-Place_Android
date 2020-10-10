@@ -1,4 +1,4 @@
-package org.techtown.moback;
+package org.techtown.moback.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
+
+import org.techtown.moback.R;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
