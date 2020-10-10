@@ -1,6 +1,8 @@
 package org.techtown.moback.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -8,64 +10,67 @@ import android.content.pm.Signature;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.ViewGroup;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
 import org.techtown.moback.R;
+import org.techtown.moback.adapter.ViewPagerAdapter;
+import org.techtown.moback.fragment.ChartFragment;
+import org.techtown.moback.fragment.GraphFragment;
+import org.techtown.moback.fragment.MyFragment;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 
+    private BottomNavigationView bottomNavigationView;
+    private ChartFragment chartFragment = new ChartFragment();
+    private GraphFragment graphFragment = new GraphFragment();
+    private MyFragment myFragment = new MyFragment();
+
+    private ViewPagerAdapter adapter;
+    private ViewPager2 viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getHashKey();
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle());
+        adapter.addFragment(graphFragment);
+        adapter.addFragment(chartFragment);
+        adapter.addFragment(myFragment);
 
-        /*
-        MapView mapView = new MapView(this);
+        viewPager = findViewById(R.id.viewpager_main);
+        viewPager.setAdapter(adapter);
 
-        ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
-        mapViewContainer.addView(mapView);
+        viewPager.setUserInputEnabled(false);
 
-        // 중심점 변경
-        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.53737528, 127.00557633), true);
-
-// 줌 레벨 변경
-        mapView.setZoomLevel(7, true);
-
-// 중심점 변경 + 줌 레벨 변경
-        mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(33.41, 126.52), 9, true);
-
-// 줌 인
-        mapView.zoomIn(true);
-
-// 줌 아웃
-        mapView.zoomOut(true); */
-    }
-    private void getHashKey(){
-        PackageInfo packageInfo = null;
-        try {
-            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        if (packageInfo == null)
-            Log.e("KeyHash", "KeyHash:null");
-
-        for (Signature signature : packageInfo.signatures) {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            } catch (NoSuchAlgorithmException e) {
-                Log.e("KeyHash", "Unable to get MessageDigest. signature=" + signature, e);
+        bottomNavigationView = findViewById(R.id.bottomnavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener((item) -> {
+            switch (item.getItemId())
+            {
+                case R.id.navigation_1:
+                    viewPager.setCurrentItem(0);
+                  //  item.setIcon(getDrawable(R.drawable.mdi_map_select));
+                    break;
+                case R.id.navigation_2:
+                    viewPager.setCurrentItem(1);
+                    //item.setIcon(getDrawable(R.drawable.chart_select));
+                    break;
+                case R.id.navigation_3:
+                    viewPager.setCurrentItem(2);
+                  //  item.setIcon(getDrawable(R.drawable.my_select));
+                    break;
             }
-        }
+
+            return true;
+        });
     }
+
 }
