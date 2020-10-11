@@ -64,6 +64,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <LinearLayout
+            android:id="@+id/makr_lineary"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/sample_mark_image"
+                android:src="@drawable/clean_w_32"
+                android:layout_marginEnd="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/sample_mark_image2"
+                android:src="@drawable/mask_w_32"
+                android:layout_marginEnd="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/sample_mark_image3"
+                android:src="@drawable/distant_w_32"
+                android:layout_marginEnd="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
         <RatingBar
             android:id="@+id/stars_ratingbar"
             android:numStars="5"
@@ -182,12 +213,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/bottomnavigation_height"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
         <ImageButton
             android:id="@+id/favorite_btn_graph"
+            android:clickable="false"
             android:background="@drawable/ripple_bg_black"
             android:src="@drawable/ic_baseline_favorite_border_24"
             app:layout_constraintStart_toStartOf="parent"
@@ -196,6 +227,7 @@
 
         <Button
             android:id="@+id/getseat_btn_graph"
+            android:clickable="false"
             android:text="Get This Seat"
             android:textColor="@color/black"
             android:textStyle="bold"

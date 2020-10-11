@@ -94,19 +94,24 @@ public class GraphFragment extends Fragment implements PlacesListener, OnMapRead
         store_name_tv = view.findViewById(R.id.storename_tv);
         store_address_tv = view.findViewById(R.id.store_address_tv);
 
+        favorite_btn.setClickable(false);
+        get_seat_btn.setClickable(false);
+
         //가게 좋아요 버튼
         favorite_btn.setOnClickListener(view1 -> {
             //TODO : 추후에 수정
+
             if(!isFavorite)
             {
                 isFavorite = true;
                 favorite_btn.setImageDrawable(getActivity().getDrawable(R.drawable.ic_baseline_favorite_24));
             }
             else
-            {
-                isFavorite = false;
-                favorite_btn.setImageDrawable(getActivity().getDrawable(R.drawable.ic_baseline_favorite_border_24));
-            }
+                {
+                    isFavorite = false;
+                    favorite_btn.setImageDrawable(getActivity().getDrawable(R.drawable.ic_baseline_favorite_border_24));
+                }
+
         });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
@@ -140,6 +145,9 @@ public class GraphFragment extends Fragment implements PlacesListener, OnMapRead
         //마커가 아닌곳 누를 땐 하단 레이아웃 숨김
         mMap.setOnMapClickListener(latLng -> {
             hideBottomInfoWindow();
+
+            get_seat_btn.setClickable(false);
+            favorite_btn.setClickable(false);
         });
 
         //정보레이아웃 보이기
@@ -150,6 +158,9 @@ public class GraphFragment extends Fragment implements PlacesListener, OnMapRead
             //하단 정보 레이아웃
             showBottomInfoWindow();
             setStoreInfo(marker.getTitle(), marker.getSnippet());
+
+            favorite_btn.setClickable(true);
+            get_seat_btn.setClickable(true);
             get_seat_btn.setBackground(getActivity().getDrawable(R.drawable.ripple_bg_primary));
             return true;
         });
@@ -244,6 +255,7 @@ public class GraphFragment extends Fragment implements PlacesListener, OnMapRead
         markerOptions.position(position);
         markerOptions.title(title);
         markerOptions.snippet(snipet);
+
         return mMap.addMarker(markerOptions);
     }
 
