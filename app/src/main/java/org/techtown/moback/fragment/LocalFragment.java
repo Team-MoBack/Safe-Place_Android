@@ -47,8 +47,8 @@ public class LocalFragment extends Fragment {
         List<ChartModel> list = new ArrayList<>();
 
         //TODO : 테스트 코드
-        list.add(new ChartModel(1, getActivity().getDrawable(R.drawable.android), "Park", "great", 1000));
-        list.add(new ChartModel(2, getActivity().getDrawable(R.drawable.android), "Kim", "great", 2000));
+        list.add(new ChartModel(1, getActivity().getDrawable(R.drawable.junction), "Park", "great", 1000));
+        list.add(new ChartModel(2, getActivity().getDrawable(R.drawable.junction), "Kim", "great", 2000));
 
         //구분선 적용
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
