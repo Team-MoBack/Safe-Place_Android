@@ -254,6 +254,7 @@
             app:layout_constraintEnd_toEndOf="@+id/view2"
             app:layout_constraintStart_toStartOf="@+id/edit_btn"
             app:srcCompat="@drawable/slice_3" />
+
         <View
             android:id="@+id/view12"
             android:layout_width="0dp"
@@ -299,6 +300,7 @@
             android:layout_marginEnd="55dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/radioButton3" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
