@@ -28,7 +28,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/view2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/mdi_map" />
+            tools:srcCompat="@drawable/junction" />
 
         <TextView
             android:id="@+id/textView4"
@@ -93,7 +93,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView6" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/edit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -175,50 +175,10 @@
             app:layout_constraintTop_toTopOf="@+id/imageView9"
             app:srcCompat="@drawable/rectangle_20" />
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="27dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView7">
-
-            <RadioButton
-                android:id="@+id/radioButton1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="60dp"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:id="@+id/radioButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:id="@+id/radioButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:id="@+id/radioButton4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_weight="1" />
-
-
-        </RadioGroup>
-
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif"
             android:text="Get some more Stamp!"
             android:textColor="#cacaca"
@@ -227,7 +187,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/view5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/radioButton3" />
 
         <TextView
             android:id="@+id/textView11"
@@ -292,21 +252,8 @@
             android:background="@android:color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="@+id/view2"
-            app:layout_constraintStart_toStartOf="@+id/imageView6"
+            app:layout_constraintStart_toStartOf="@+id/edit_btn"
             app:srcCompat="@drawable/slice_3" />
-
-        <View
-            android:id="@+id/view13"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="87dp"
-            android:background="#051205"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-        </View>
-
         <View
             android:id="@+id/view12"
             android:layout_width="0dp"
@@ -318,36 +265,40 @@
             app:layout_constraintTop_toBottomOf="@+id/button2"
             app:layout_constraintVertical_bias="0.0" />
 
-        <ImageButton
-            android:id="@+id/imageButton16"
+        <RadioButton
+            android:id="@+id/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="@+id/view12"
-            app:layout_constraintTop_toTopOf="@+id/view12"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/mdi_map" />
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
-        <ImageButton
-            android:id="@+id/imageButton17"
+        <RadioButton
+            android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton18"
-            app:layout_constraintStart_toEndOf="@+id/imageButton16"
-            app:layout_constraintTop_toTopOf="@+id/imageButton16"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/fi_bar_chart_2" />
+            app:layout_constraintLeft_toRightOf="@id/radioButton"
+            app:layout_constraintRight_toLeftOf="@id/radioButton3"
+            app:layout_constraintTop_toTopOf="@+id/radioButton"
+            tools:layout_editor_absoluteX="143dp" />
 
-        <ImageButton
-            android:id="@+id/imageButton18"
+        <RadioButton
+            android:id="@+id/radioButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            app:layout_constraintEnd_toEndOf="@+id/view12"
-            app:layout_constraintTop_toTopOf="@+id/imageButton17"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/my_select" />
+            app:layout_constraintLeft_toRightOf="@id/radioButton2"
+            app:layout_constraintRight_toLeftOf="@id/radioButton4"
+            app:layout_constraintTop_toTopOf="@+id/radioButton2"
+            tools:layout_editor_absoluteX="244dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="55dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/radioButton3" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
