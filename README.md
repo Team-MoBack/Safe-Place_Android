@@ -13,7 +13,7 @@
 ---------------
 ### 1. What Problem Solving?
 우리 팀은 코로나-19로 인해 사람들이 예전처럼 자유롭게 외출하지 못한다는 점에 주목하였습니다. 사람들은 근처의 슈퍼마켓을 가더라도 좀 더 안전한 곳을 방문하길 원합니다.  
-그러므로, 우리 팀은 근처의 그들의 현재 위치를 기반으로 근처의 위생적으로 안전한 가게들을 소개해주는 앱을 기획하였습니다.  
+그러므로, 우리 팀은 그들의 현재 위치를 기반으로 근처의 위생적으로 안전한 가게들을 소개해주는 앱을 기획하였습니다.  
   
 >Our team noted that COVID-19 prevents people from going out as freely as before. People want to visit a safer place even if they go to a nearby supermarket.  
 >Therefore, our team planned an app that introduces the nearby quarantine safety shops based on their current location.  
