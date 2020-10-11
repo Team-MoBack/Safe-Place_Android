@@ -45,8 +45,11 @@ public class AllFragment extends Fragment {
         List<ChartModel> list = new ArrayList<>();
 
         //TODO : 테스트 코드
-        list.add(new ChartModel(1, getActivity().getDrawable(R.drawable.android), "Park", "great", 1000));
-        list.add(new ChartModel(2, getActivity().getDrawable(R.drawable.android), "Kim", "great", 2000));
+        list.add(new ChartModel(1, getActivity().getDrawable(R.drawable.junction), "Park", "great", 10030));
+        list.add(new ChartModel(2, getActivity().getDrawable(R.drawable.junction), "Kim", "Excellent", 2050));
+        list.add(new ChartModel(3, getActivity().getDrawable(R.drawable.junction), "Lee", "Perfect", 5560));
+        list.add(new ChartModel(4, getActivity().getDrawable(R.drawable.junction), "Rosa", "Gold", 15000));
+        list.add(new ChartModel(5, getActivity().getDrawable(R.drawable.junction), "Roi", "Silver", 500));
 
         //구분선 적용
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -73,4 +74,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //맵 화면에서 하단 정보창 닫기
+    @Override
+    public void onBackPressed() {
+
+        if(viewPager.getCurrentItem() == 0 && graphFragment.isVisibleInfoLayout())
+            graphFragment.hideBottomInfoWindow();
+        else
+            super.onBackPressed();
+    }
 }
