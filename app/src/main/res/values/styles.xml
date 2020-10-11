@@ -10,4 +10,10 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="RatingStyle" parent="@style/Widget.AppCompat.RatingBar">
+        <item name="android:maxHeight">24dip</item>
+        <item name="android:minHeight">24dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:thumb">@null</item>
+    </style>
 </resources>
