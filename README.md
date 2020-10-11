@@ -25,6 +25,12 @@
 >This app introduces you to several of the cleanest and safest places to visit based on your current location.  
 >You can check or evaluate whether employees are clean, customers are wearing masks, and quarantine supplies are deployed.
 
+### 3. Team Member
+* __Android Developer :__ Jun Hyeon Park, JoSuah
+* __Back-End Developer :__ Jaegu Kim
+* __Designer :__ Ye Ajeong
+* __Plannar :__ Tak
+
 ## Functions
 --------------
 1. 자영업자들은 그들의 가게를 앱에 등록할 수 있습니다.
