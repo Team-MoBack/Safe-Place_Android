@@ -26,10 +26,10 @@
 >You can check or evaluate whether employees are clean, customers are wearing masks, and quarantine supplies are deployed.
 
 ### 3. Team Member
-* __Android Developer :__ Jun Hyeon Park (https://github.com/Sky-Titan), JoSuah (https://github.com/surzioarmani)
-* __Back-End Developer :__ Jaegu Kim (https://github.com/JaeguKim)
-* __Designer :__ Ye Ajeong
-* __Plannar :__ Tak
+* __Android Developer :__ `Jun Hyeon Park` (https://github.com/Sky-Titan), `JoSuah` (https://github.com/surzioarmani)
+* __Back-End Developer :__ `Jaegu Kim` (https://github.com/JaeguKim)
+* __Designer :__ `Ye Ajeong`
+* __Plannar :__ `Tak`
 
 ## Functions
 --------------
