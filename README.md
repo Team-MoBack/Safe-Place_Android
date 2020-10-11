@@ -1,8 +1,11 @@
 # Safe Place : Make your local society better
 *2020 Junction x Seoul - Team 'Moback'*
-
 <img src=./images/junction.png width="250">
-  
+
+## About
+------------------
+* __Junction :__ https://app.hackjunction.com/events/junctionx-seoul 
+
 ## Overview
 ---------------
 ### 1. What Problem Solving?
