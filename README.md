@@ -1,5 +1,6 @@
 # Safe Place : Make your local society better
 *2020 Junction x Seoul - Team 'Moback'*  
+
 <img src=./images/junction.png width="300">  
 
 
