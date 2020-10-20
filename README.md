@@ -9,7 +9,9 @@
 * __Junction x Seoul :__ https://app.hackjunction.com/events/junctionx-seoul
 * 트랙3 라쿠텐 API 3등 프로젝트입니다.
 > It is Track 3 Rakuten API 3rd place project.
-<img src=./images/Desktop-1.png width="400">
+<img src=./images/Desktop-1.png width="400">  
+  
+<img src=./images/track_winner.png width="400">
 
 ## Overview
 ---------------
