@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"/>
 
             <ImageButton
-                android:id="@+id/trailling_btn_signin"
+                android:id="@+id/trailing_btn_signin"
                 android:src="@drawable/untrailing_icon"
                 android:background="?attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="parent"

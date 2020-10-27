@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"/>
 
             <ImageButton
-                android:id="@+id/trailling_btn_signup"
+                android:id="@+id/trailing_btn_signup"
                 android:src="@drawable/untrailing_icon"
                 android:background="?attr/selectableItemBackground"
                 app:layout_constraintEnd_toEndOf="parent"
