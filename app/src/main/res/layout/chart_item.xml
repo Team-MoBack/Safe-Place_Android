@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
     <data>
         <variable
             name="model"
@@ -7,13 +7,15 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="85dp">
 
         <TextView
             android:id="@+id/rank_number"
             android:inputType="number"
-            android:text="@{model.rank_number}"
+            android:text="@{model.rank_numberStr}"
             android:textColor="#515753"
             android:textStyle="bold"
             android:textSize="20sp"
@@ -71,7 +73,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:inputType="number"
-            android:text="@{model.user_point}"
+            android:text="@{model.user_pointStr}"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp"

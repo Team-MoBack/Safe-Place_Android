@@ -155,9 +155,13 @@ class GraphFragment : Fragment(), PlacesListener, OnMapReadyCallback {
                 val locationManager = activity!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager
                 val connectivityManager = activity!!.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
                 val networkInfo = connectivityManager.activeNetworkInfo
-                val location: Location
+
                 //네트워크 연결 O -> 네트워크
-                location = if (networkInfo != null && networkInfo.isConnected) locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER) else locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                val location: Location = if (networkInfo != null && networkInfo.isConnected)
+                    locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+                else
+                    locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
                 return location
             } catch (e: SecurityException) {
                 e.printStackTrace()

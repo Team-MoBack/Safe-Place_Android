@@ -5,9 +5,9 @@ import androidx.recyclerview.widget.DiffUtil
 
 data class ChartModel(var rank_number: Int, var profile_image: Drawable, var user_name: String, var user_level: String,var user_point: Int) {
 
-    fun getUser_point() : String = user_point.toString()
+    fun getUser_pointStr() : String = user_point.toString()
 
-    fun getRank_number() : String = rank_number.toString()
+    fun getRank_numberStr() : String = rank_number.toString()
 
     companion object {
         @JvmField
