@@ -4,9 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import org.techtown.moback.MyApplication
 import org.techtown.moback.R
+import org.techtown.moback.server.ServerLibrary
 
 class SignInActivity : AppCompatActivity() {
 
@@ -17,12 +24,25 @@ class SignInActivity : AppCompatActivity() {
 
         backpress_signin.setOnClickListener({ view: View? -> finish() })
 
+        var application = application as MyApplication
+
         signin_btn_signin.setOnClickListener( { view: View? ->
 
             //TODO : 로그인 과정
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            CoroutineScope(Dispatchers.Main).launch {
+
+                async (Dispatchers.Default) {
+                    return@async ServerLibrary.login(id_edit_signin.text.toString(), pw_edit_signin.text.toString())
+                }.await()?.let {
+                    application.token = it
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }?:let {
+                    Toast.makeText(applicationContext, "로그인 실패", Toast.LENGTH_SHORT).show()
+                }
+            }
+
         })
 
         setTrailingMode()

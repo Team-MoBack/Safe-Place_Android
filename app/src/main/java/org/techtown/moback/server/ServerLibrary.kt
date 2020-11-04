@@ -12,7 +12,7 @@ class ServerLibrary {
 
     companion object{
 
-        private val ip_address = "http://121.182.37.7:80"
+        private val ip_address = "http://localhost:80"
 
         public fun login(email: String, password: String) : String?
         {

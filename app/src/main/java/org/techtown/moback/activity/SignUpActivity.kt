@@ -3,10 +3,16 @@ package org.techtown.moback.activity
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import org.techtown.moback.R
+import org.techtown.moback.server.ServerLibrary
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -17,7 +23,21 @@ class SignUpActivity : AppCompatActivity() {
         backpress_signup.setOnClickListener({ view: View? -> finish() })
         signup_btn_signup.setOnClickListener({ view: View? ->
             //TODO : 회원가입과정
-            finish()
+
+            CoroutineScope(Dispatchers.Main).launch {
+
+                var result = async(Dispatchers.Default) {
+                    return@async ServerLibrary.registerUser(id_edit_signup.text.toString(), "Test","test", pw_edit_signup.text.toString())
+                }.await()
+
+                if(result)
+                {
+                    Toast.makeText(applicationContext, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                else
+                    Toast.makeText(applicationContext, "회원가입 실패", Toast.LENGTH_SHORT).show()
+            }
         })
         setTrailingMode()
     }
