@@ -16,7 +16,7 @@ import java.util.*
 
 class LocalFragment : Fragment() {
 
-
+    private val TAG = "LocalFragment"
     private lateinit var adapter: ChartListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

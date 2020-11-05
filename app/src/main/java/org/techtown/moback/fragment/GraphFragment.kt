@@ -32,6 +32,7 @@ import java.util.*
 
 class GraphFragment : Fragment(), PlacesListener, OnMapReadyCallback {
 
+    private val TAG = "GraphFragment"
     private var mMap: GoogleMap? = null
 
     private var previous_marker: MutableList<Marker>? = null

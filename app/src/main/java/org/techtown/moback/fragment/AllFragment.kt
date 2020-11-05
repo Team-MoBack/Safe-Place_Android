@@ -15,7 +15,7 @@ import java.util.*
 
 class AllFragment : Fragment() {
 
-
+    private val TAG = "AllFragment"
     private lateinit var adapter: ChartListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

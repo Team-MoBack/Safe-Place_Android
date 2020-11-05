@@ -3,6 +3,7 @@ package org.techtown.moback.activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import org.techtown.moback.server.ServerLibrary
 
 class SignInActivity : AppCompatActivity() {
 
+    private val TAG = "SignInActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,9 @@ class SignInActivity : AppCompatActivity() {
                     return@async ServerLibrary.login(id_edit_signin.text.toString(), pw_edit_signin.text.toString())
                 }.await()?.let {
                     application.token = it
+
+                    Log.d(TAG, "token : $it")
+
                     val intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
                     finish()

@@ -16,6 +16,8 @@ import org.techtown.moback.server.ServerLibrary
 
 class SignUpActivity : AppCompatActivity() {
 
+    private val TAG = "SignUpActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)

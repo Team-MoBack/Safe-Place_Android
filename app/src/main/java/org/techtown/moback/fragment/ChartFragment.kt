@@ -14,7 +14,7 @@ import org.techtown.moback.adapter.ViewPagerAdapter
 
 class ChartFragment : Fragment() {
 
-
+    private val TAG = "ChartFragment"
     private lateinit var adapter: ViewPagerAdapter
     private lateinit var localFragment: LocalFragment
     private lateinit var allFragment: AllFragment

@@ -13,6 +13,8 @@ import org.techtown.moback.fragment.MyFragment
 
 class MainActivity : AppCompatActivity() {
 
+    private val TAG = "MainActivity"
+
     private lateinit var bottomNavigationView: BottomNavigationView
     private val chartFragment = ChartFragment()
     private val graphFragment = GraphFragment()

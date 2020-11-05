@@ -17,6 +17,8 @@ import org.techtown.moback.R
 
 class SplashActivity : AppCompatActivity() {
 
+    private val TAG = "SplashActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)

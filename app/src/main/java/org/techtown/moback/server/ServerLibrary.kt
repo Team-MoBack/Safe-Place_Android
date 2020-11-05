@@ -1,5 +1,6 @@
 package org.techtown.moback.server
 
+import androidx.annotation.WorkerThread
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -10,10 +11,13 @@ import java.net.URL
 
 class ServerLibrary {
 
+    private val TAG = "ServerLibrary"
+
     companion object{
 
-        private val ip_address = "http://localhost:80"
+        private val ip_address = "http://121.182.37.7:80"
 
+        @WorkerThread
         public fun login(email: String, password: String) : String?
         {
             var result : String? = null
@@ -50,6 +54,7 @@ class ServerLibrary {
             return result
         }
 
+        @WorkerThread
         public fun registerUser(email : String, firstName:  String, lastName : String, password : String) : Boolean
         {
             var result = false

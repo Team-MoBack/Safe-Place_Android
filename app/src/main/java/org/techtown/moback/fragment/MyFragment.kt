@@ -10,6 +10,7 @@ import org.techtown.moback.R
 
 class MyFragment : Fragment() {
 
+    private val TAG = "MyFragment"
     private var mParam1: String? = null
     private var mParam2: String? = null
 

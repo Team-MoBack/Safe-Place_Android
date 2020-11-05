@@ -7,7 +7,10 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import java.util.*
 
 class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
+
+    private val TAG = "ViewPagerAdapter"
     private val mFragmentList: MutableList<Fragment> = ArrayList()
+
     fun addFragment(fragment: Fragment) {
         mFragmentList.add(fragment)
     }

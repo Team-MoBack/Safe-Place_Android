@@ -10,6 +10,7 @@ import org.techtown.moback.model.ChartModel
 
 class ChartListAdapter  : ListAdapter<ChartModel, MyViewHolder<ChartItemBinding>>(ChartModel.DIFF_CALLBACK) {
 
+    private val TAG = "ChartListAdapter"
 
     override fun getItemCount(): Int {
         return currentList.size
