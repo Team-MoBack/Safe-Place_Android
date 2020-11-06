@@ -8,6 +8,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +26,14 @@ import com.google.android.gms.maps.model.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_chart.*
 import kotlinx.android.synthetic.main.fragment_graph.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import noman.googleplaces.*
+import org.techtown.moback.MyApplication
 import org.techtown.moback.R
+import org.techtown.moback.server.ServerLibrary
 import java.io.IOException
 import java.util.*
 
@@ -38,7 +45,8 @@ class GraphFragment : Fragment(), PlacesListener, OnMapReadyCallback {
     private var previous_marker: MutableList<Marker>? = null
 
     private var isFavorite = false
-    private val radius = 500
+    private val radius = 10000.0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -162,7 +170,7 @@ class GraphFragment : Fragment(), PlacesListener, OnMapReadyCallback {
                     locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
                 else
                     locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-
+                Log.d(TAG, "${location.latitude} ${location.longitude}")
                 return location
             } catch (e: SecurityException) {
                 e.printStackTrace()
@@ -223,21 +231,45 @@ class GraphFragment : Fragment(), PlacesListener, OnMapReadyCallback {
     private fun showPlaceInformation(location: LatLng?) {
         mMap!!.clear() //지도 클리어
         goToMyLocation()
-        if (previous_marker != null) previous_marker!!.clear() //지역정보 마커 클리어
-        NRPlaces.Builder()
+
+        if (previous_marker != null)
+            previous_marker!!.clear() //지역정보 마커 클리어
+
+        CoroutineScope(Dispatchers.Main).launch {
+
+            var stores = async(Dispatchers.Default) {
+                return@async ServerLibrary.searchStoresInRadius(location!!.latitude, location!!.longitude, radius, MyApplication.token)
+            }.await()
+
+            for (store in stores) {
+                val latLng = LatLng(store.latitude, store.longitude)
+                val markerSnippet = getAddress(latLng)
+                val item = addMarkerInMap(latLng, store.name, markerSnippet, R.drawable.cafe_w_24_8995_ff)
+                previous_marker!!.add(item)
+            }
+
+            //중복 마커 제거
+            val hashSet = HashSet<Marker>()
+            hashSet.addAll(previous_marker!!)
+            previous_marker!!.clear()
+            previous_marker!!.addAll(hashSet)
+        }
+     /*   NRPlaces.Builder()
                 .listener(this)
                 .key("AIzaSyBIlMDJQLVxv6tNxqDyxAk5ErqPNm5Qmts")
                 .latlng(location!!.latitude, location.longitude) //현재 위치
-                .radius(radius) //500 미터 내에서 검색
+                .radius(radius.toInt()) //500 미터 내에서 검색
                 .type(PlaceType.CAFE) //카페
                 .build()
                 .execute()
-    }
+    */}
 
     override fun onPlacesFailure(e: PlacesException) {}
     override fun onPlacesStart() {}
+
+
     override fun onPlacesSuccess(places: List<Place>) {
-        activity!!.runOnUiThread {
+    /*    activity!!.runOnUiThread {
             for (place in places) {
                 val latLng = LatLng(place.latitude, place.longitude)
                 val markerSnippet = getAddress(latLng)
@@ -250,7 +282,7 @@ class GraphFragment : Fragment(), PlacesListener, OnMapReadyCallback {
             hashSet.addAll(previous_marker!!)
             previous_marker!!.clear()
             previous_marker!!.addAll(hashSet)
-        }
+        }*/
     }
 
     override fun onPlacesFinished() {}

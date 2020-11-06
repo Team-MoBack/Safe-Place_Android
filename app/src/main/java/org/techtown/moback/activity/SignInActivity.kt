@@ -26,17 +26,13 @@ class SignInActivity : AppCompatActivity() {
 
         backpress_signin.setOnClickListener({ view: View? -> finish() })
 
-        var application = application as MyApplication
-
         signin_btn_signin.setOnClickListener( { view: View? ->
 
-            //TODO : 로그인 과정
-            CoroutineScope(Dispatchers.Main).launch {
+            //로그인 과정
+            CoroutineScope(Dispatchers.Default).launch {
 
-                async (Dispatchers.Default) {
-                    return@async ServerLibrary.login(id_edit_signin.text.toString(), pw_edit_signin.text.toString())
-                }.await()?.let {
-                    application.token = it
+                ServerLibrary.login(id_edit_signin.text.toString(), pw_edit_signin.text.toString())?.let {
+                    MyApplication.token = it
 
                     Log.d(TAG, "token : $it")
 
@@ -44,8 +40,9 @@ class SignInActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }?:let {
-                    Toast.makeText(applicationContext, "로그인 실패", Toast.LENGTH_SHORT).show()
+                    async(Dispatchers.Main) { Toast.makeText(applicationContext, "로그인 실패", Toast.LENGTH_SHORT).show() }
                 }
+
             }
 
         })

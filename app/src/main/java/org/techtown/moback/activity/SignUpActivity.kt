@@ -24,21 +24,21 @@ class SignUpActivity : AppCompatActivity() {
 
         backpress_signup.setOnClickListener({ view: View? -> finish() })
         signup_btn_signup.setOnClickListener({ view: View? ->
-            //TODO : 회원가입과정
 
-            CoroutineScope(Dispatchers.Main).launch {
+            //회원가입과정
+            CoroutineScope(Dispatchers.Default).launch {
 
-                var result = async(Dispatchers.Default) {
-                    return@async ServerLibrary.registerUser(id_edit_signup.text.toString(), "Test","test", pw_edit_signup.text.toString())
-                }.await()
+                var result = ServerLibrary.registerUser(id_edit_signup.text.toString(), "Test","test", pw_edit_signup.text.toString())
 
-                if(result)
-                {
-                    Toast.makeText(applicationContext, "회원가입 성공", Toast.LENGTH_SHORT).show()
-                    finish()
+                async(Dispatchers.Main) {
+                    if(result)
+                    {
+                        Toast.makeText(applicationContext, "회원가입 성공", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                    else
+                        Toast.makeText(applicationContext, "회원가입 실패", Toast.LENGTH_SHORT).show()
                 }
-                else
-                    Toast.makeText(applicationContext, "회원가입 실패", Toast.LENGTH_SHORT).show()
             }
         })
         setTrailingMode()
