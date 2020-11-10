@@ -56,7 +56,7 @@
 ## Use Tech
 --------------
 ### Android
-* __Language :__ Java
+* __Language :__ Kotlin
 * __IDE :__ Android Studio
 ### Design
 * __Tools :__ Pigma, Zeplin
